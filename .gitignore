@@ -1,0 +1,58 @@
+# Python関連
+*.py[cod]
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# PyCharm関連
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# CLion関連
+.cmake/
+cmake-build-*/
+
+# Visual Studio Code関連
+.vscode/
+*.code-workspace
+.history/
+
+# PlatformIO関連
+.pio/
+.pioenvs/
+.piolibdeps/
+
+# ビルド出力
+build/
+dist/
+*.egg-info/
+*.egg
+
+# その他の一般的な除外ファイル
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+*.bak
+*.swp
+*~
+
+# 環境固有のファイルやディレクトリ
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# 秘密鍵や証明書
+*.pem
+*.key
+*.cert
