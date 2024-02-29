@@ -1,5 +1,5 @@
 #include <Arduino.h>
-#include "../../WiFiHelper.h"
+#include "WiFiHelper.h"
 
 #ifndef WIFI_SSID
 #define WIFI_SSID ""  // TODO WiFi SSID (2.4GHz only)

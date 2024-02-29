@@ -1,6 +1,6 @@
 #include <WiFiUdp.h>
-#include "../../NTPClient.h"
-#include "../../WiFiHelper.h"
+#include "NTPClient.h"
+#include "WiFiHelper.h"
 #include "PollingTimer.h"
 
 #ifndef WIFI_SSID
