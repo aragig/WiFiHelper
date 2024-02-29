@@ -2,8 +2,9 @@
  * @file WiFiHelper.h
  * @author Toshihiko Arai
  * @brief
- * @version 0.3.4
- * @date 2022-06-28
+ * @version 0.3.5
+ * @date 2024-02-29
+ * @copyright 2024 Toshihiko Arai
  *
  */
 #ifndef WiFiHelper_h
@@ -45,8 +46,8 @@
 #endif  // WIFI_HELPER_PRINT_ERROR
 
 class WiFiHelper {
-   public:
-    WiFiHelper(const char *ssid, const char *password, const char *label="WiFiHelper",
+public:
+    WiFiHelper(const char *ssid, const char *password, const char *label="~WiFiHelper",
                bool enable_event = true);
     ~WiFiHelper();
     void WiFiEvent(WiFiEvent_t event);
@@ -61,7 +62,7 @@ class WiFiHelper {
     // void onDisconnected(std::function<void(void)> cb);
     virtual void onDisconnected();
 
-   protected:
+protected:
     const int WIFI_CONNECT_TRY_MAX = 5;
     const char *_ssid;
     const char *_password;

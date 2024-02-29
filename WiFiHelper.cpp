@@ -1,16 +1,17 @@
 /**
  * @file WiFiHelper.cpp
- * @author Toshihiko Arai
+ * @author Toshihiko Arai (https://101010.fun)
  * @brief
- * @version 0.3.3
- * @date 2022-06-28
+ * @version 0.3.5
+ * @date 2024-02-29
+ * @copyright 2024 Toshihiko Arai
  *
  */
 #include "WiFiHelper.h"
 
 WiFiHelper::WiFiHelper(const char *ssid, const char *password,
                        const char *label, bool enable_event)
-    : _ssid(ssid), _password(password), _label(label) {
+        : _ssid(ssid), _password(password), _label(label) {
     using namespace std::placeholders;  // for `_1`
     if (enable_event) {
         _event_id = WiFi.onEvent(std::bind(&WiFiHelper::WiFiEvent, this, _1));
@@ -38,84 +39,84 @@ void WiFiHelper::WiFiEvent(WiFiEvent_t event) {
     LOG_LN(_label, "Event No:" + String(event));
     switch (event) {
         case SYSTEM_EVENT_WIFI_READY:
-            LOG_LN(_label, "WiFi interface ready");
+        LOG_LN(_label, "WiFi interface ready");
             break;
         case SYSTEM_EVENT_SCAN_DONE:
-            LOG_LN(_label, "Completed scan for access points");
+        LOG_LN(_label, "Completed scan for access points");
             break;
         case SYSTEM_EVENT_STA_START:
-            LOG_LN(_label, "WiFi client started");
+        LOG_LN(_label, "WiFi client started");
             break;
         case SYSTEM_EVENT_STA_STOP:
-            LOG_LN(_label, "WiFi clients stopped");
+        LOG_LN(_label, "WiFi clients stopped");
             break;
         case SYSTEM_EVENT_STA_CONNECTED:
-            LOG_LN(_label, "Connected to access point");
+        LOG_LN(_label, "Connected to access point");
             break;
         case SYSTEM_EVENT_STA_DISCONNECTED:
-            LOG_LN(_label, "Disconnected from WiFi access point");
+        LOG_LN(_label, "Disconnected from WiFi access point");
             onDisconnected();
             break;
         case SYSTEM_EVENT_STA_AUTHMODE_CHANGE:
-            LOG_LN(_label, "Authentication mode of access point has changed");
+        LOG_LN(_label, "Authentication mode of access point has changed");
             break;
         case SYSTEM_EVENT_STA_GOT_IP:
-            LOG_LN(_label, "My IP address: " + localIP());
+        LOG_LN(_label, "My IP address: " + localIP());
             break;
         case SYSTEM_EVENT_STA_LOST_IP:
-            LOG_LN(_label, "Lost IP address and IP address is reset to 0");
+        LOG_LN(_label, "Lost IP address and IP address is reset to 0");
             break;
         case SYSTEM_EVENT_STA_WPS_ER_SUCCESS:
-            LOG_LN(_label,
-                   "WiFi Protected Setup (WPS): succeeded in enrollee mode");
+        LOG_LN(_label,
+               "WiFi Protected Setup (WPS): succeeded in enrollee mode");
             break;
         case SYSTEM_EVENT_STA_WPS_ER_FAILED:
-            ERR_LN(_label,
-                   "WiFi Protected Setup (WPS): failed in enrollee mode");
+        ERR_LN(_label,
+               "WiFi Protected Setup (WPS): failed in enrollee mode");
             break;
         case SYSTEM_EVENT_STA_WPS_ER_TIMEOUT:
-            ERR_LN(_label,
-                   "WiFi Protected Setup (WPS): timeout in enrollee mode");
+        ERR_LN(_label,
+               "WiFi Protected Setup (WPS): timeout in enrollee mode");
             break;
         case SYSTEM_EVENT_STA_WPS_ER_PIN:
-            LOG_LN(_label,
-                   "WiFi Protected Setup (WPS): pin code in enrollee mode");
+        LOG_LN(_label,
+               "WiFi Protected Setup (WPS): pin code in enrollee mode");
             break;
         case SYSTEM_EVENT_AP_START:
-            LOG_LN(_label, "WiFi access point started");
+        LOG_LN(_label, "WiFi access point started");
             break;
         case SYSTEM_EVENT_AP_STOP:
-            LOG_LN(_label, "WiFi access point  stopped");
+        LOG_LN(_label, "WiFi access point  stopped");
             break;
         case SYSTEM_EVENT_AP_STACONNECTED:
-            LOG_LN(_label, "Client connected");
+        LOG_LN(_label, "Client connected");
             break;
         case SYSTEM_EVENT_AP_STADISCONNECTED:
-            LOG_LN(_label, "Client disconnected");
+        LOG_LN(_label, "Client disconnected");
             break;
         case SYSTEM_EVENT_AP_STAIPASSIGNED:
-            LOG_LN(_label, "Assigned IP address to client");
+        LOG_LN(_label, "Assigned IP address to client");
             break;
         case SYSTEM_EVENT_AP_PROBEREQRECVED:
-            LOG_LN(_label, "Received probe request");
+        LOG_LN(_label, "Received probe request");
             break;
         case SYSTEM_EVENT_GOT_IP6:
-            LOG_LN(_label, "IPv6 is preferred");
+        LOG_LN(_label, "IPv6 is preferred");
             break;
         case SYSTEM_EVENT_ETH_START:
-            LOG_LN(_label, "Ethernet started");
+        LOG_LN(_label, "Ethernet started");
             break;
         case SYSTEM_EVENT_ETH_STOP:
-            LOG_LN(_label, "Ethernet stopped");
+        LOG_LN(_label, "Ethernet stopped");
             break;
         case SYSTEM_EVENT_ETH_CONNECTED:
-            LOG_LN(_label, "Ethernet connected");
+        LOG_LN(_label, "Ethernet connected");
             break;
         case SYSTEM_EVENT_ETH_DISCONNECTED:
-            ERR_LN(_label, "Ethernet disconnected");
+        ERR_LN(_label, "Ethernet disconnected");
             break;
         case SYSTEM_EVENT_ETH_GOT_IP:
-            LOG_LN(_label, "Obtained IP address");
+        LOG_LN(_label, "Obtained IP address");
             break;
         default:
             break;

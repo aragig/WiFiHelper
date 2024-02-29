@@ -1,6 +1,6 @@
 #include <WiFiUdp.h>
-#include "NTPClient.h"
-#include "WiFiHelper.h"
+#include "../../NTPClient.h"
+#include "../../WiFiHelper.h"
 #include "PollingTimer.h"
 
 #ifndef WIFI_SSID
@@ -42,7 +42,6 @@ void setup() {
 void loop() {
     timer.handler(); // PollingTimerのイベント用ハンドル
     timeClient.update(); // NTPClientの更新用ハンドル
-
 
     delay(10);
 }

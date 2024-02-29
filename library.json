@@ -1,0 +1,22 @@
+{
+  "name": "WiFiHelper",
+  "version": "0.3.5",
+  "description": "",
+  "keywords": "wifi, esp32, helper",
+  "repository":
+  {
+    "type": "git",
+    "url": "https://github.com/aragig/WiFiHelper.git"
+  },
+  "authors":
+  [
+    {
+      "name": "Toshihiko Arai",
+      "email": "i.officearai@gmail.com",
+      "url": "https://101010.fun"
+    }
+  ],
+  "license": "MIT",
+  "frameworks": "arduino",
+  "platforms": ["espressif8266", "espressif32"]
+}

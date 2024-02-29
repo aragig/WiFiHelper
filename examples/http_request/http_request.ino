@@ -1,5 +1,5 @@
 #include <Arduino.h>
-#include "WiFiHelper.h"
+#include "../../WiFiHelper.h"
 
 #ifndef WIFI_SSID
 #define WIFI_SSID ""  // TODO WiFi SSID (2.4GHz only)
@@ -11,7 +11,7 @@
 
 #include <HTTPClient.h>
 
-WiFiHelper wifi(WIFI_SSID, WIFI_PASSWORD, "WiFiHelper");
+WiFiHelper wifi(WIFI_SSID, WIFI_PASSWORD, "~WiFiHelper");
 
 struct HttpResponse {
     int code;
@@ -70,5 +70,3 @@ void loop() {
 
     delay(3000);
 }
-
-
