@@ -128,7 +128,7 @@ void WiFiHelper::WiFiEvent(WiFiEvent_t event) {
  * @return true -> WiFi接続成功
  * @return false -> SSID、Passwordが未入力 or WiFi接続失敗
  */
-bool WiFiHelper::begin() {
+bool WiFiHelper::on() {
     if (!checkConfig()) {
         return false;
     }
@@ -210,7 +210,7 @@ String WiFiHelper::localIP() {
  * @brief すぐに切断すると送信失敗する可能性あるためdelayを入れてる
  *
  */
-void WiFiHelper::end() {
+void WiFiHelper::off() {
     delay(1000);
     WiFi.disconnect(true);
     WiFi.mode(WIFI_OFF);

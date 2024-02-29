@@ -23,7 +23,7 @@ HttpResponse http_request(String url) {
     response.code = -1;
     response.body = "";
 
-    if (!wifi.begin()) {
+    if (!wifi.on()) { // WiFi接続
         response.code = -99;
         response.body = "Failed to initialize WiFi";
         return response; // WiFi初期化失敗
@@ -49,14 +49,13 @@ HttpResponse http_request(String url) {
     }
 
     http.end(); // HTTP接続終了
+    wifi.off(); // WiFi切断
     return response;
 }
 
 void setup() {
     Serial.begin(115200);
-    delay(3000);
-    wifi.begin();
-
+    delay(10000);
 }
 
 void loop() {

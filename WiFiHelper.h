@@ -2,7 +2,7 @@
  * @file WiFiHelper.h
  * @author Toshihiko Arai
  * @brief
- * @version 0.3.3
+ * @version 0.3.4
  * @date 2022-06-28
  *
  */
@@ -46,13 +46,14 @@
 
 class WiFiHelper {
    public:
-    WiFiHelper(const char *ssid, const char *password, const char *label,
+    WiFiHelper(const char *ssid, const char *password, const char *label="WiFiHelper",
                bool enable_event = true);
     ~WiFiHelper();
     void WiFiEvent(WiFiEvent_t event);
-    bool begin();
-    void end();
+    bool on();
+    void off();
     bool checkConfig();
+
     void connect();
     void tryConnect();
     bool isConnected();
