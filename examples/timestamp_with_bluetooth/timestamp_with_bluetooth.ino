@@ -38,6 +38,13 @@ PollingTimer timer;
 
 void printDateTime() {
     Serial.println(timeClient.getFormattedDate());
+
+    if(SerialBT.connected()) {
+        Serial.println("Bluetooth接続が確立されました。");
+        String jsonStr = "{\"DEVICE_NAME\":\"ESP_RFID_MONITOR\", \"EPC_TAGS\":[\"3000E200001D8702016827708880\", \"3000E200001D870201662770887F\", \"3000E200001D87020167277090BB\"]}";
+        SerialBT.print(jsonStr);
+        SerialBT.println();
+    }
 }
 
 void setup() {
@@ -53,7 +60,7 @@ void setup() {
     delay(1000);
 
     wifi.on();
-    timer.setInterval(printDateTime, 3000, true);
+    timer.setInterval(printDateTime, 10000, true);
     timer.fire();
 
 }
@@ -62,9 +69,10 @@ void loop() {
     timer.handler(); // PollingTimerのイベント用ハンドル
     timeClient.update(); // NTPClientの更新用ハンドル
 
-    Dev32.printRemainHeap(true);
+//    Dev32.printRemainHeap(false);
 
-    delay(5000);
+    delay(10);
+
 }
 
 static void gap_callback(esp_bt_gap_cb_event_t event, esp_bt_gap_cb_param_t *param) {
